@@ -94,6 +94,8 @@ RUN dpkg --add-architecture i386 \
 && git clone https://github.com/scwuaptx/Pwngdb.git --depth 1 ~/Pwngdb \
 && cat ~/Pwngdb/.gdbinit >> ~/.gdbinit \
 
+&& git clone https://github.com/gpakosz/.tmux.git --depth 1 ~/.tmux \
+
 && apt install -y \
    automake \
    bison \

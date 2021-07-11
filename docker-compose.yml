@@ -12,7 +12,6 @@ services:
     
     volumes:
       - ../:/pwn
-      - ./.tmux:/root/.tmux
       - ./.tmux.conf:/root/.tmux.conf
       - ./.pwn.conf:/root/.pwn.conf
 
