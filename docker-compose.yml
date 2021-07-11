@@ -1,0 +1,20 @@
+version: "2.2"
+services:
+  ctf:
+    privileged: true
+    build: 
+      dockerfile: Dockerfile
+      context: .
+
+    # Modify the command below to contain the plugin name you want to run
+    command: tmux 
+    working_dir: /pwn
+    
+    volumes:
+      - ../:/pwn
+      - ./.tmux:/root/.tmux
+      - ./.tmux.conf:/root/.tmux.conf
+      - ./.pwn.conf:/root/.pwn.conf
+
+    environment:
+      - LANG=en_US.UTF-8
