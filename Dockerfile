@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 ENV TERM screen-256color
 ENV LC_ALL en_US.UTF-8
@@ -60,7 +60,7 @@ RUN dpkg --add-architecture i386 \
    ltrace \
    make \
    nasm \
-   python-pip \
+   python3-pip \
    qemu \
    ruby-dev \
    strace \
