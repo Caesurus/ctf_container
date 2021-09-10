@@ -28,6 +28,7 @@ RUN apt-add-repository ppa:neovim-ppa/stable \
    wget \
    curl \
    xsel \
+   netcat \
 
 && cd /tmp \
 && wget https://bootstrap.pypa.io/get-pip.py \
