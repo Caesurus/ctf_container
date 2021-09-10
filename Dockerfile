@@ -55,7 +55,6 @@ RUN dpkg --add-architecture i386 \
    cmake \
    g++ \
    git \
-   gdb-multiarch \
    libc6:i386 \
    ltrace \
    make \
@@ -110,6 +109,19 @@ RUN dpkg --add-architecture i386 \
    locales \
 && locale-gen en_US.UTF-8 \
 && dpkg-reconfigure --frontend=noninteractive locales
+
+
+# GDB package has issues... https://github.com/Gallopsled/pwntools/issues/1783
+# So download it ourselves and compile...
+RUN cd /tmp \
+&& wget https://sourceware.org/pub/gdb/snapshots/current/gdb-12.0.50.20210910.tar.xz \
+&& tar xvf gdb-12.0.50.20210910.tar.xz \
+&& cd gdb-12.0.50.20210910 \
+&& ./configure --with-python=/usr/bin/python3 \
+&& make -j 6 \ 
+&& make install \
+&& cd /tmp \ 
+&& /usr/bin/rm -rf /tmp/gdb-12*
 
 # pip
 RUN pip3 install \
