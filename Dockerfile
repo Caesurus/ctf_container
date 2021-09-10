@@ -128,8 +128,16 @@ RUN pip3 install \
 && cd /tmp \
 && git clone https://github.com/devttys0/binwalk.git --depth 1 \
 && cd ./binwalk \
-&& ./setup.py install \
+&& ./setup.py install 
+
+RUN cd /usr/local \
+&& git clone https://github.com/lunixbochs/usercorn.git \
+&& cd usercorn \
+&& make deps \
+&& make \ 
+&& echo 'PATH=${PATH}:/usr/local/usercorn' >> ~/.bashrc \
 
 # cleanup
 && apt clean \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
