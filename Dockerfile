@@ -143,14 +143,14 @@ RUN pip3 install \
 && cd ./binwalk \
 && ./setup.py install 
 
-RUN cd /usr/local \
-&& git clone https://github.com/lunixbochs/usercorn.git \
-&& cd usercorn \
-&& make deps \
-&& make \ 
-&& echo 'PATH=${PATH}:/usr/local/usercorn' >> ~/.bashrc \
+#RUN cd /usr/local \
+#&& git clone https://github.com/lunixbochs/usercorn.git \
+#&& cd usercorn \
+#&& make deps \
+#&& make \ 
+#&& echo 'PATH=${PATH}:/usr/local/usercorn' >> ~/.bashrc \
 
 # cleanup
-&& apt clean \
+RUN apt clean \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
