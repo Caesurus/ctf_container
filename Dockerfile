@@ -115,9 +115,9 @@ RUN dpkg --add-architecture i386 \
 # GDB package has issues... https://github.com/Gallopsled/pwntools/issues/1783
 # So download it ourselves and compile...
 RUN cd /tmp \
-&& wget https://sourceware.org/pub/gdb/snapshots/current/gdb-12.0.50.20210910.tar.xz \
-&& tar xvf gdb-12.0.50.20210910.tar.xz \
-&& cd gdb-12.0.50.20210910 \
+&& wget https://sourceware.org/pub/gdb/snapshots/current/gdb-12.0.50.20220320.tar.xz \
+&& tar xvf gdb-12.0.50.20220320.tar.xz \
+&& cd gdb-12.0.50.20220320 \
 && ./configure --with-python=/usr/bin/python3 \
 && make -j 6 \ 
 && make install \
