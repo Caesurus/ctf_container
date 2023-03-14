@@ -90,7 +90,7 @@ RUN dpkg --add-architecture i386 \
 && echo 'done' >> ~/.bashrc \
 
 # gdb
-&& wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh \
+&& bash -c "$(wget https://gef.blah.cat/sh -O -)" \
 && git clone https://github.com/scwuaptx/Pwngdb.git --depth 1 ~/Pwngdb \
 && cat ~/Pwngdb/.gdbinit >> ~/.gdbinit \
 
