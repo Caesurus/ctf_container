@@ -6,12 +6,12 @@ Uploading for posterity...
 
 Build the container:
 ```
-docker-compose build
+docker compose build
 ```
 
 Start container with:
 ```
-docker-compose run --rm ctf
+docker compose run --rm ctf
 ```
 
 This will volume mount `../` to `/pwn` in the container. 
