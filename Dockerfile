@@ -131,24 +131,24 @@ RUN pip3 install \
    gmpy \
    # openpyxl \
    pycrypto \
-   Pillow \
+   # Pillow \
    # sympy \
    # ujson \
-   xortool \
+   # xortool \
    # yara-python \
 
 # binwalk
-&& cd /tmp \
-&& git clone https://github.com/devttys0/binwalk.git --depth 1 \
-&& cd ./binwalk \
-&& ./setup.py install 
+&& cd /tmp 
 
-#RUN cd /usr/local \
-#&& git clone https://github.com/lunixbochs/usercorn.git \
-#&& cd usercorn \
-#&& make deps \
-#&& make \ 
-#&& echo 'PATH=${PATH}:/usr/local/usercorn' >> ~/.bashrc \
+RUN apt-get update && apt-get install -y \
+    curl \
+    build-essential \
+    libfontconfig1-dev
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+RUN cd /tmp && cargo install binwalk
 
 # cleanup
 RUN apt clean \
