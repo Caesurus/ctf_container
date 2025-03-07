@@ -65,6 +65,8 @@ RUN dpkg --add-architecture i386 \
    ruby-dev \
    strace \
    python3 \
+   gdb \
+   gdbserver \
 
 && pip3 install --upgrade pip \
 
@@ -90,9 +92,13 @@ RUN dpkg --add-architecture i386 \
 && echo 'done' >> ~/.bashrc \
 
 # gdb
-&& bash -c "$(wget https://gef.blah.cat/sh -O -)" \
-&& git clone https://github.com/scwuaptx/Pwngdb.git --depth 1 ~/Pwngdb \
-&& cat ~/Pwngdb/.gdbinit >> ~/.gdbinit \
+#&& bash -c "$(wget https://gef.blah.cat/sh -O -)" \
+#&& git clone https://github.com/scwuaptx/Pwngdb.git --depth 1 ~/Pwngdb \
+#&& cat ~/Pwngdb/.gdbinit >> ~/.gdbinit \
+&& cd / \
+&& git clone https://github.com/pwndbg/pwndbg \
+&& cd pwndbg \
+&& ./setup.sh \
 
 && git clone https://github.com/gpakosz/.tmux.git --depth 1 ~/.tmux \
 
@@ -114,15 +120,15 @@ RUN dpkg --add-architecture i386 \
 
 # GDB package has issues... https://github.com/Gallopsled/pwntools/issues/1783
 # So download it ourselves and compile...
-RUN cd /tmp \
-&& wget https://sourceware.org/pub/gdb/snapshots/current/gdb-12.0.50.20220320.tar.xz \
-&& tar xvf gdb-12.0.50.20220320.tar.xz \
-&& cd gdb-12.0.50.20220320 \
-&& ./configure --with-python=/usr/bin/python3 \
-&& make -j 6 \ 
-&& make install \
-&& cd /tmp \ 
-&& /usr/bin/rm -rf /tmp/gdb-12*
+#RUN cd /tmp \
+#&& wget https://sourceware.org/pub/gdb/snapshots/current/gdb-12.0.50.20220320.tar.xz \
+#&& tar xvf gdb-12.0.50.20220320.tar.xz \
+#&& cd gdb-12.0.50.20220320 \
+#&& ./configure --with-python=/usr/bin/python3 \
+#&& make -j 6 \ 
+#&& make install \
+#&& cd /tmp \ 
+#&& /usr/bin/rm -rf /tmp/gdb-12*
 
 # pip
 RUN pip3 install \
